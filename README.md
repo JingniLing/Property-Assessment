@@ -1,1 +1,1 @@
-# HW-1-and-2
+# HW-1 and HW-2
