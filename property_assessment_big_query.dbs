@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="PROPERTY_ASSESSMENT_LGL" id="GoogleBigQuery-1415" database="GoogleBigQuery" >
+	<schema name="INSTANCE" catalogname="PROPERTY_ASSESSMENT_LGL" >
+		<table name="DIM_LOCATION" >
+			<column name="LOCATION_ID" type="int64" jt="4" mandatory="y" />
+			<column name="ST_NUM" type="int64" jt="4" />
+			<column name="ST_NAME" type="string" length="30" jt="12" />
+			<column name="CITY" type="string" length="20" jt="12" />
+			<column name="ZIPCODE" type="int64" jt="4" />
+			<index name="pk_DIM_LOCATION" unique="PRIMARY_KEY" >
+				<column name="LOCATION_ID" />
+			</index>
+		</table>
+		<table name="DIM_PROPERTY" >
+			<column name="PROPERTY_ID" type="int64" jt="4" mandatory="y" />
+			<column name="NUM_BLDGS" type="int64" jt="4" />
+			<column name="LUC" type="int64" jt="4" />
+			<column name="LU" type="string" length="5" jt="12" />
+			<column name="LU_DESC" type="string" length="30" jt="12" />
+			<column name="BLDG_TYPE" type="string" length="20" jt="12" />
+			<column name="ROOF_STRUCTURE" type="string" length="20" jt="12" />
+			<column name="ROOF_COVER" type="string" length="20" jt="12" />
+			<column name="INT_WALL" type="string" length="20" jt="12" />
+			<column name="EXT_FINISHED" type="string" length="20" jt="12" />
+			<column name="INT_COND" type="string" length="20" jt="12" />
+			<column name="EXT_COND" type="string" length="20" jt="12" />
+			<column name="OVERALL_COND" type="string" length="20" jt="12" />
+			<column name="RES_FLOOR" type="int64" jt="4" />
+			<column name="LAND_SF" type="numeric" length="6" decimal="2" jt="2" />
+			<column name="GROSS_AREA" type="numeric" length="6" decimal="2" jt="2" />
+			<column name="LIVING_AREA" type="numeric" length="6" decimal="2" jt="2" />
+			<column name="BED_RMS" type="int64" jt="4" />
+			<column name="FULL_BTH" type="int64" jt="4" />
+			<column name="HALF_BTH" type="int64" jt="4" />
+			<column name="KITCHEN" type="int64" jt="4" />
+			<column name="TT_RMS" type="int64" jt="4" />
+			<column name="BTHRM_STYLE1" type="string" length="20" jt="12" />
+			<column name="KITCHEN_TYPE" type="string" length="20" jt="12" />
+			<column name="KITCHEN_TYPE1" type="string" length="20" jt="12" />
+			<column name="HEAT_TYPE" type="string" length="20" jt="12" />
+			<column name="AC_TYPE" type="string" length="20" jt="12" />
+			<column name="FIRE_PLACE" type="int64" jt="4" />
+			<column name="NUM_PARKING" type="int64" jt="4" />
+			<column name="PROP_VIEW" type="string" length="20" jt="12" />
+			<column name="YR_BUILT" type="date" jt="91" />
+			<column name="YR_REMODEL" type="date" jt="91" />
+			<index name="pk_DIM_PROPERTY" unique="PRIMARY_KEY" >
+				<column name="PROPERTY_ID" />
+			</index>
+		</table>
+		<table name="DIM_PROPERTY_OWNER" >
+			<column name="OWNER_ID" type="int64" jt="4" mandatory="y" />
+			<column name="OWN_OCC" type="string" length="2" jt="12" />
+			<column name="OWNER" type="string" length="20" jt="12" />
+			<index name="pk_DIM_PROPERTY_OWNER" unique="PRIMARY_KEY" >
+				<column name="OWNER_ID" />
+			</index>
+		</table>
+		<table name="FACTS_PROPERTY" >
+			<column name="PID" type="int64" jt="4" mandatory="y" />
+			<column name="GIS_ID" type="int64" jt="4" >
+				<comment><![CDATA[10‐digit parcel number of Condo Main, which houses all related condo units]]></comment>
+			</column>
+			<column name="LAND_VALUE" type="numeric" length="7" decimal="2" jt="2" mandatory="y" />
+			<column name="BLDG_VALUE" type="numeric" length="7" decimal="2" jt="2" mandatory="y" />
+			<column name="TOTAL_VALUE" type="numeric" length="7" decimal="2" jt="2" mandatory="y" />
+			<column name="GROSS_TAX" type="numeric" length="6" decimal="2" jt="2" mandatory="y" />
+			<column name="LOCATION_ID" type="int64" jt="4" mandatory="y" />
+			<column name="PROPERTY_ID" type="int64" jt="4" mandatory="y" />
+			<column name="OWNER_ID" type="int64" jt="4" mandatory="y" />
+			<index name="pk_FACTS_PROPERTY" unique="PRIMARY_KEY" >
+				<column name="PID" />
+				<column name="LOCATION_ID" />
+				<column name="PROPERTY_ID" />
+				<column name="OWNER_ID" />
+			</index>
+			<index name="unq_OWNER_ID" unique="UNIQUE_INDEX" >
+				<column name="OWNER_ID" />
+			</index>
+			<index name="unq_LOCATION_ID" unique="UNIQUE_INDEX" >
+				<column name="LOCATION_ID" />
+			</index>
+			<index name="unq_PROPERTY_ID" unique="UNIQUE_INDEX" >
+				<column name="PROPERTY_ID" />
+			</index>
+			<fk name="fk_FACTS_PROPERTY_DIM_LOCATION" virtual="y" to_schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" to_table="DIM_LOCATION" >
+				<fk_column name="LOCATION_ID" pk="LOCATION_ID" />
+			</fk>
+			<fk name="fk_FACTS_PROPERTY_DIM_PROPERTY" virtual="y" to_schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" to_table="DIM_PROPERTY" >
+				<fk_column name="PROPERTY_ID" pk="PROPERTY_ID" />
+			</fk>
+			<fk name="fk_FACTS_PROPERTY_DIM_PROPERTY_OWNER" virtual="y" to_schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" to_table="DIM_PROPERTY_OWNER" >
+				<fk_column name="OWNER_ID" pk="OWNER_ID" />
+			</fk>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-1de4" confirmed="y" show_relation="columns" >
+		<entity schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="DIM_LOCATION" color="C1D8EE" x="51" y="136" />
+		<entity schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="DIM_PROPERTY" color="C1D8EE" x="527" y="51" />
+		<entity schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="DIM_PROPERTY_OWNER" color="C1D8EE" x="255" y="425" />
+		<entity schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="FACTS_PROPERTY" color="3986C1" x="306" y="119" />
+		<script name="SQL_Editor" id="Editor-1f6c" language="SQL" >
+			<string><![CDATA[CREATE SCHEMA INSTANCE;
+
+CREATE TABLE PROPERTY_ASSESSMENT_LGL.INSTANCE.DIM_LOCATION ( 
+	LOCATION_ID int64 NOT NULL  ,
+	ST_NUM int64  ,
+	ST_NAME string  ,
+	CITY string  ,
+	ZIPCODE int64  
+ );
+
+ALTER TABLE PROPERTY_ASSESSMENT_LGL.INSTANCE.DIM_LOCATION ADD PRIMARY KEY ( LOCATION_ID )  NOT ENFORCED;
+
+CREATE TABLE PROPERTY_ASSESSMENT_LGL.INSTANCE.DIM_PROPERTY ( 
+	PROPERTY_ID int64 NOT NULL  ,
+	NUM_BLDGS int64  ,
+	LUC int64  ,
+	LU string  ,
+	LU_DESC string  ,
+	BLDG_TYPE string  ,
+	ROOF_STRUCTURE string  ,
+	ROOF_COVER string  ,
+	INT_WALL string  ,
+	EXT_FINISHED string  ,
+	INT_COND string  ,
+	EXT_COND string  ,
+	OVERALL_COND string  ,
+	RES_FLOOR int64  ,
+	LAND_SF numeric  ,
+	GROSS_AREA numeric  ,
+	LIVING_AREA numeric  ,
+	BED_RMS int64  ,
+	FULL_BTH int64  ,
+	HALF_BTH int64  ,
+	KITCHEN int64  ,
+	TT_RMS int64  ,
+	BTHRM_STYLE1 string  ,
+	KITCHEN_TYPE string  ,
+	KITCHEN_TYPE1 string  ,
+	HEAT_TYPE string  ,
+	AC_TYPE string  ,
+	FIRE_PLACE int64  ,
+	NUM_PARKING int64  ,
+	PROP_VIEW string  ,
+	YR_BUILT date  ,
+	YR_REMODEL date  
+ );
+
+ALTER TABLE PROPERTY_ASSESSMENT_LGL.INSTANCE.DIM_PROPERTY ADD PRIMARY KEY ( PROPERTY_ID )  NOT ENFORCED;
+
+CREATE TABLE PROPERTY_ASSESSMENT_LGL.INSTANCE.DIM_PROPERTY_OWNER ( 
+	OWNER_ID int64 NOT NULL  ,
+	OWN_OCC string  ,
+	OWNER string  ,
+	MAIL_STREET_ADDRESS string  ,
+	MAIL_CITY string  ,
+	MAIL_STATE string  ,
+	MAIL_ZIP_CODE int64  
+ );
+
+ALTER TABLE PROPERTY_ASSESSMENT_LGL.INSTANCE.DIM_PROPERTY_OWNER ADD PRIMARY KEY ( OWNER_ID )  NOT ENFORCED;
+
+CREATE TABLE PROPERTY_ASSESSMENT_LGL.INSTANCE.FACTS_PROPERTY ( 
+	PID int64 NOT NULL  ,
+	GIS_ID int64 OPTIONS( description='10‐digit parcel number of Condo Main, which houses all related condo units' )   ,
+	LAND_VALUE numeric NOT NULL  ,
+	BLDG_VALUE numeric NOT NULL  ,
+	TOTAL_VALUE numeric NOT NULL  ,
+	GROSS_TAX numeric NOT NULL  ,
+	LOCATION_ID int64 NOT NULL  ,
+	PROPERTY_ID int64 NOT NULL  ,
+	OWNER_ID int64 NOT NULL  
+ );
+
+ALTER TABLE PROPERTY_ASSESSMENT_LGL.INSTANCE.FACTS_PROPERTY ADD PRIMARY KEY ( PID, LOCATION_ID, PROPERTY_ID, OWNER_ID )  NOT ENFORCED;]]></string>
+		</script>
+		<browser id="Browse-1be1" name="fk_FACTS_PROPERTY_DIM_LOCATION" confirm_updates="y" >
+			<browse_table schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" entity="DIM_LOCATION" x="20" y="20" width="279" height="269" >
+				<browse_table schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" entity="FACTS_PROPERTY" fk="fk_FACTS_PROPERTY_DIM_LOCATION" x="339" y="20" width="500" height="350" />
+			</browse_table>
+		</browser>
+		<browser id="Browse-1784" name="fk_FACTS_PROPERTY_DIM_PROPERTY_001" confirm_updates="y" >
+			<browse_table schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" entity="DIM_PROPERTY" x="20" y="20" width="279" height="269" >
+				<browse_table schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" entity="FACTS_PROPERTY" fk="fk_FACTS_PROPERTY_DIM_PROPERTY" x="339" y="20" width="500" height="350" />
+			</browse_table>
+		</browser>
+		<query id="Query-2454" name="fk_FACTS_PROPERTY_DIM_PROPERTY" >
+			<query_table schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="DIM_PROPERTY" alias="dp" x="51" y="51" >
+				<column name="PROPERTY_ID" />
+				<column name="NUM_BLDGS" />
+				<column name="LUC" />
+				<column name="LU" />
+				<column name="LU_DESC" />
+				<column name="BLDG_TYPE" />
+				<column name="ROOF_STRUCTURE" />
+				<column name="ROOF_COVER" />
+				<column name="INT_WALL" />
+				<column name="EXT_FINISHED" />
+				<column name="INT_COND" />
+				<column name="EXT_COND" />
+				<column name="OVERALL_COND" />
+				<column name="RES_FLOOR" />
+				<column name="LAND_SF" />
+				<column name="GROSS_AREA" />
+				<column name="LIVING_AREA" />
+				<column name="BED_RMS" />
+				<column name="FULL_BTH" />
+				<column name="HALF_BTH" />
+				<column name="KITCHEN" />
+				<column name="TT_RMS" />
+				<column name="BTHRM_STYLE1" />
+				<column name="KITCHEN_TYPE" />
+				<column name="KITCHEN_TYPE1" />
+				<column name="HEAT_TYPE" />
+				<column name="AC_TYPE" />
+				<column name="FIRE_PLACE" />
+				<column name="NUM_PARKING" />
+				<column name="PROP_VIEW" />
+				<column name="YR_BUILT" />
+				<column name="YR_REMODEL" />
+				<query_table schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="FACTS_PROPERTY" alias="fp" x="306" y="51" fk="fk_FACTS_PROPERTY_DIM_PROPERTY" type="Inner Join" />
+			</query_table>
+		</query>
+		<query id="Query-17c8" name="fk_FACTS_PROPERTY_DIM_PROPERTY_002" >
+			<query_table schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="DIM_PROPERTY" alias="dp" x="51" y="51" >
+				<column name="PROPERTY_ID" />
+				<column name="NUM_BLDGS" />
+				<column name="LUC" />
+				<column name="LU" />
+				<column name="LU_DESC" />
+				<column name="BLDG_TYPE" />
+				<column name="ROOF_STRUCTURE" />
+				<column name="ROOF_COVER" />
+				<column name="INT_WALL" />
+				<column name="EXT_FINISHED" />
+				<column name="INT_COND" />
+				<column name="EXT_COND" />
+				<column name="OVERALL_COND" />
+				<column name="RES_FLOOR" />
+				<column name="LAND_SF" />
+				<column name="GROSS_AREA" />
+				<column name="LIVING_AREA" />
+				<column name="BED_RMS" />
+				<column name="FULL_BTH" />
+				<column name="HALF_BTH" />
+				<column name="KITCHEN" />
+				<column name="TT_RMS" />
+				<column name="BTHRM_STYLE1" />
+				<column name="KITCHEN_TYPE" />
+				<column name="KITCHEN_TYPE1" />
+				<column name="HEAT_TYPE" />
+				<column name="AC_TYPE" />
+				<column name="FIRE_PLACE" />
+				<column name="NUM_PARKING" />
+				<column name="PROP_VIEW" />
+				<column name="YR_BUILT" />
+				<column name="YR_REMODEL" />
+				<query_table schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="FACTS_PROPERTY" alias="fp" x="306" y="51" fk="fk_FACTS_PROPERTY_DIM_PROPERTY" type="Inner Join" />
+			</query_table>
+		</query>
+	</layout>
+</project>

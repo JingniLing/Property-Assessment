@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="PROPERTY_ASSESSMENT_LGL" id="LogicalDesign-21ac" database="LogicalDesign" >
+	<schema name="INSTANCE" catalogname="PROPERTY_ASSESSMENT_LGL" >
+		<comment_tag name="PhysicalName" value="INSTANCE" />
+		<table name="DIM LOCATION" prior="DIM_LOCATION" >
+			<comment_tag name="PhysicalName" value="DIM_LOCATION" />
+			<column name="LOCATION ID" prior="LOCATION_ID" type="INT" jt="4" mandatory="y" >
+				<comment_tag name="PhysicalName" value="LOCATION_ID" />
+			</column>
+			<column name="ST NUM" prior="ST_NUM" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="ST_NUM" />
+			</column>
+			<column name="ST NAME" prior="ST_NAME" type="VARCHAR" length="30" jt="12" >
+				<comment_tag name="PhysicalName" value="ST_NAME" />
+			</column>
+			<column name="CITY" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="CITY" />
+			</column>
+			<column name="ZIPCODE" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="ZIPCODE" />
+			</column>
+			<index name="pk DIM LOCATION" unique="PRIMARY_KEY" >
+				<column name="LOCATION ID" />
+			</index>
+		</table>
+		<table name="DIM PROPERTY" prior="DIM_PROPERTY" >
+			<comment_tag name="PhysicalName" value="DIM_PROPERTY" />
+			<column name="PROPERTY ID" prior="PROPERTY_ID" type="INT" jt="4" mandatory="y" >
+				<comment_tag name="PhysicalName" value="PROPERTY_ID" />
+			</column>
+			<column name="NUM BLDGS" prior="NUM_BLDGS" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="NUM_BLDGS" />
+			</column>
+			<column name="LUC" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="LUC" />
+			</column>
+			<column name="LU" type="VARCHAR" length="5" jt="12" >
+				<comment_tag name="PhysicalName" value="LU" />
+			</column>
+			<column name="LU DESC" prior="LU_DESC" type="VARCHAR" length="30" jt="12" >
+				<comment_tag name="PhysicalName" value="LU_DESC" />
+			</column>
+			<column name="BLDG TYPE" prior="BLDG_TYPE" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="BLDG_TYPE" />
+			</column>
+			<column name="ROOF STRUCTURE" prior="ROOF_STRUCTURE" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="ROOF_STRUCTURE" />
+			</column>
+			<column name="ROOF COVER" prior="ROOF_COVER" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="ROOF_COVER" />
+			</column>
+			<column name="INT WALL" prior="INT_WALL" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="INT_WALL" />
+			</column>
+			<column name="EXT FINISHED" prior="EXT_FINISHED" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="EXT_FINISHED" />
+			</column>
+			<column name="INT COND" prior="INT_COND" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="INT_COND" />
+			</column>
+			<column name="EXT COND" prior="EXT_COND" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="EXT_COND" />
+			</column>
+			<column name="OVERALL COND" prior="OVERALL_COND" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="OVERALL_COND" />
+			</column>
+			<column name="RES FLOOR" prior="RES_FLOOR" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="RES_FLOOR" />
+			</column>
+			<column name="LAND SF" prior="LAND_SF" type="NUMERIC" length="6" decimal="2" jt="2" >
+				<comment_tag name="PhysicalName" value="LAND_SF" />
+			</column>
+			<column name="GROSS AREA" prior="GROSS_AREA" type="NUMERIC" length="6" decimal="2" jt="2" >
+				<comment_tag name="PhysicalName" value="GROSS_AREA" />
+			</column>
+			<column name="LIVING AREA" prior="LIVING_AREA" type="NUMERIC" length="6" decimal="2" jt="2" >
+				<comment_tag name="PhysicalName" value="LIVING_AREA" />
+			</column>
+			<column name="BED RMS" prior="BED_RMS" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="BED_RMS" />
+			</column>
+			<column name="FULL BTH" prior="FULL_BTH" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="FULL_BTH" />
+			</column>
+			<column name="HALF BTH" prior="HALF_BTH" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="HALF_BTH" />
+			</column>
+			<column name="KITCHEN" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="KITCHEN" />
+			</column>
+			<column name="TT RMS" prior="TT_RMS" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="TT_RMS" />
+			</column>
+			<column name="BTHRM STYLE1" prior="BTHRM_STYLE1" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="BTHRM_STYLE1" />
+			</column>
+			<column name="KITCHEN TYPE" prior="KITCHEN_TYPE" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="KITCHEN_TYPE" />
+			</column>
+			<column name="KITCHEN TYPE1" prior="KITCHEN_TYPE1" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="KITCHEN_TYPE1" />
+			</column>
+			<column name="HEAT TYPE" prior="HEAT_TYPE" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="HEAT_TYPE" />
+			</column>
+			<column name="AC TYPE" prior="AC_TYPE" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="AC_TYPE" />
+			</column>
+			<column name="FIRE PLACE" prior="FIRE_PLACE" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="FIRE_PLACE" />
+			</column>
+			<column name="NUM PARKING" prior="NUM_PARKING" type="INT" jt="4" >
+				<comment_tag name="PhysicalName" value="NUM_PARKING" />
+			</column>
+			<column name="PROP VIEW" prior="PROP_VIEW" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="PROP_VIEW" />
+			</column>
+			<column name="YR BUILT" prior="YR_BUILT" type="DATE" jt="91" >
+				<comment_tag name="PhysicalName" value="YR_BUILT" />
+			</column>
+			<column name="YR REMODEL" prior="YR_REMODEL" type="DATE" jt="91" >
+				<comment_tag name="PhysicalName" value="YR_REMODEL" />
+			</column>
+			<index name="pk DIM PROPERTY" unique="PRIMARY_KEY" >
+				<column name="PROPERTY ID" />
+			</index>
+		</table>
+		<table name="DIM PROPERTY OWNER" prior="DIM_PROPERTY_OWNER" >
+			<comment_tag name="PhysicalName" value="DIM_PROPERTY_OWNER" />
+			<column name="OWNER ID" prior="OWNER_ID" type="INT" jt="4" mandatory="y" >
+				<comment_tag name="PhysicalName" value="OWNER_ID" />
+			</column>
+			<column name="OWN OCC" prior="OWN_OCC" type="VARCHAR" length="2" jt="12" >
+				<comment_tag name="PhysicalName" value="OWN_OCC" />
+			</column>
+			<column name="OWNER" type="VARCHAR" length="20" jt="12" >
+				<comment_tag name="PhysicalName" value="OWNER" />
+			</column>
+			<index name="pk DIM PROPERTY OWNER" unique="PRIMARY_KEY" >
+				<column name="OWNER ID" />
+			</index>
+		</table>
+		<table name="FACTS PROPERTY" prior="FACTS_PROPERTY" >
+			<comment_tag name="PhysicalName" value="FACTS_PROPERTY" />
+			<column name="PID" type="INT" jt="4" mandatory="y" >
+				<comment_tag name="PhysicalName" value="PID" />
+			</column>
+			<column name="GIS ID" prior="GIS_ID" type="INT" jt="4" >
+				<comment><![CDATA[10‐digit parcel number of Condo Main, which houses all related condo units]]></comment>
+				<comment_tag name="PhysicalName" value="GIS_ID" />
+			</column>
+			<column name="LAND VALUE" prior="LAND_VALUE" type="NUMERIC" length="7" decimal="2" jt="2" mandatory="y" >
+				<comment_tag name="PhysicalName" value="LAND_VALUE" />
+			</column>
+			<column name="BLDG VALUE" prior="BLDG_VALUE" type="NUMERIC" length="7" decimal="2" jt="2" mandatory="y" >
+				<comment_tag name="PhysicalName" value="BLDG_VALUE" />
+			</column>
+			<column name="TOTAL VALUE" prior="TOTAL_VALUE" type="NUMERIC" length="7" decimal="2" jt="2" mandatory="y" >
+				<comment_tag name="PhysicalName" value="TOTAL_VALUE" />
+			</column>
+			<column name="GROSS TAX" prior="GROSS_TAX" type="NUMERIC" length="6" decimal="2" jt="2" mandatory="y" >
+				<comment_tag name="PhysicalName" value="GROSS_TAX" />
+			</column>
+			<column name="LOCATION ID" prior="LOCATION_ID" type="INT" jt="4" mandatory="y" >
+				<comment_tag name="PhysicalName" value="LOCATION_ID" />
+			</column>
+			<column name="PROPERTY ID" prior="PROPERTY_ID" type="INT" jt="4" mandatory="y" >
+				<comment_tag name="PhysicalName" value="PROPERTY_ID" />
+			</column>
+			<column name="OWNER ID" prior="OWNER_ID" type="INT" jt="4" mandatory="y" >
+				<comment_tag name="PhysicalName" value="OWNER_ID" />
+			</column>
+			<index name="pk FACTS PROPERTY" unique="PRIMARY_KEY" >
+				<column name="PID" />
+				<column name="LOCATION ID" />
+				<column name="PROPERTY ID" />
+				<column name="OWNER ID" />
+			</index>
+			<index name="unq OWNER ID" unique="UNIQUE_INDEX" >
+				<column name="OWNER ID" />
+			</index>
+			<index name="unq LOCATION ID" unique="UNIQUE_INDEX" >
+				<column name="LOCATION ID" />
+			</index>
+			<index name="unq PROPERTY ID" unique="UNIQUE_INDEX" >
+				<column name="PROPERTY ID" />
+			</index>
+			<fk name="fk FACTS PROPERTY DIM LOCATION" virtual="y" to_schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" to_table="DIM LOCATION" type="NonIdentifying" mandatory="n" cardinality="OneMore" range_from="0" range_to="0" >
+				<fk_column name="LOCATION ID" pk="LOCATION ID" />
+			</fk>
+			<fk name="fk FACTS PROPERTY DIM PROPERTY" virtual="y" to_schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" to_table="DIM PROPERTY" type="NonIdentifying" mandatory="n" cardinality="OneMore" range_from="0" range_to="0" >
+				<fk_column name="PROPERTY ID" pk="PROPERTY ID" />
+			</fk>
+			<fk name="fk FACTS PROPERTY DIM PROPERTY OWNER" virtual="y" to_schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" to_table="DIM PROPERTY OWNER" type="NonIdentifying" mandatory="n" cardinality="OneMore" range_from="0" range_to="0" >
+				<fk_column name="OWNER ID" pk="OWNER ID" />
+			</fk>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-b9e" confirmed="y" show_relation="columns" >
+		<entity schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="DIM LOCATION" color="C1D8EE" x="51" y="136" />
+		<entity schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="DIM PROPERTY" color="C1D8EE" x="527" y="51" />
+		<entity schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="DIM PROPERTY OWNER" color="C1D8EE" x="255" y="425" />
+		<entity schema="PROPERTY_ASSESSMENT_LGL.INSTANCE" name="FACTS PROPERTY" color="3986C1" x="306" y="119" />
+	</layout>
+</project>
