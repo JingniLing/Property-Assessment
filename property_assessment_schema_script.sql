@@ -1,73 +1,71 @@
-CREATE SCHEMA IF NOT EXISTS "PROPERTY_ASSESSMENT";
+CREATE SCHEMA IF NOT EXISTS property_assessment;
 
-CREATE TABLE "PROPERTY_ASSESSMENT".dim_location (
-	LOCATION_ID INT NOT NULL  ,
-	ST_NUM INT  ,
-	ST_NAME VARCHAR(100)  ,
-	CITY VARCHAR(100)  ,
-	ZIP_CODE INT    ,
-    CONSTRAINT pk_dim_location PRIMARY KEY (LOCATION_ID)
+CREATE TABLE property_assessment.dim_location (
+	location_id bigint NOT NULL  ,
+	st_num integer  ,
+	st_name varchar(100)  ,
+	city varchar(100)  ,
+	zip_code integer    ,
+    CONSTRAINT pk_dim_location PRIMARY KEY (location_id)
  );
 
 
-CREATE TABLE "PROPERTY_ASSESSMENT".dim_property (
-	PROPERTY_ID INT NOT NULL  ,
-	NUM_BLDGS INT  ,
-	LUC INT  ,
-	LU VARCHAR(100)  ,
-	LU_DESC VARCHAR(255)  ,
-	BLDG_TYPE VARCHAR(100)  ,
-	ROOF_STRUCTURE VARCHAR(100)  ,
-	ROOF_COVER VARCHAR(100)  ,
-	INT_WALL VARCHAR(100)  ,
-	EXT_FINISHED VARCHAR(100)  ,
-	INT_COND VARCHAR(100)  ,
-	EXT_COND VARCHAR(100)  ,
-	OVERALL_COND VARCHAR(100)  ,
-	RES_FLOOR INT  ,
-	LAND_SF  INT ,
-	GROSS_AREA INT   ,
-	LIVING_AREA INT   ,
-	BED_RMS INT  ,
-	FULL_BTH INT  ,
-	HALF_BTH INT  ,
-	KITCHEN INT  ,
-	TT_RMS INT  ,
-	BTHRM_STYLE1 VARCHAR(100)  ,
-	KITCHEN_TYPE VARCHAR(100)  ,
-	KITCHEN_TYPE1 VARCHAR(100)  ,
-	HEAT_TYPE VARCHAR(100)  ,
-	AC_TYPE VARCHAR(100)  ,
-	FIRE_PLACE INT  ,
-	NUM_PARKING INT  ,
-	PROP_VIEW VARCHAR(100)  ,
-	YR_BUILT date  ,
-	YR_REMODEL date ,
-    CONSTRAINT pk_dim_property PRIMARY KEY (PROPERTY_ID)
+CREATE TABLE property_assessment.dim_property (
+	property_id bigint NOT NULL  ,
+	num_bldgs integer  ,
+	luc integer  ,
+	lu varchar(100)  ,
+	lu_desc varchar(255)  ,
+	bldg_type varchar(100)  ,
+	roof_structure varchar(100)  ,
+	roof_cover varchar(100)  ,
+	int_wall varchar(100)  ,
+	ext_finished varchar(100)  ,
+	res_floor integer  ,
+	land_sf  integer ,
+	gross_area integer   ,
+	living_area integer   ,
+	bed_rms integer  ,
+	full_bth integer  ,
+	half_BTH integer  ,
+	kitchen integer  ,
+	tt_rms integer  ,
+	bthrm_style1 varchar(100)  ,
+	kitchen_style1 varchar(100)  ,
+	KITCHEN_TYPE varchar(100)  ,
+	heat_type varchar(100)  ,
+	ac_type varchar(100)  ,
+	fire_place integer  ,
+	num_parking integer  ,
+	prop_view varchar(100)  ,
+    int_cond_score integer  ,
+    ext_cond_score integer  ,
+    prop_view_score integer ,
+	yr_built date  ,
+	yr_remodel date ,
+    CONSTRAINT pk_dim_property PRIMARY KEY (property_id)
  );
 
 
-CREATE TABLE "PROPERTY_ASSESSMENT".dim_property_owner (
-	OWNER_ID INT NOT NULL  ,
-	OWN_OCC VARCHAR(100)  ,
-	OWNER VARCHAR(100)  ,
-	MAIL_STREET_ADDRESS VARCHAR(200)  ,
-	MAIL_CITY VARCHAR(100)  ,
-	MAIL_STATE VARCHAR(100)  ,
-	MAIL_ZIP_CODE INT   ,
-    CONSTRAINT pk_dim_property_owner PRIMARY KEY (OWNER_ID)
+CREATE TABLE property_assessment.dim_property_owner (
+	owner_id bigint NOT NULL  ,
+	own_occ varchar(100)  ,
+	owner varchar(100)  ,
+    own_occ_type integer
+    CONSTRAINT pk_dim_property_owner PRIMARY KEY (owner_id)
  );
 
 
-CREATE TABLE "PROPERTY_ASSESSMENT".facts_property (
-	PID INT NOT NULL  ,
-	GIS_ID INT  ,
-	LAND_VALUE decimal (10,2)  ,
-	BLDG_VALUE decimal (10,2)  ,
-	TOTAL_VALUE decimal (10,2)  ,
-	GROSS_TAX decimal (10,2)  ,
-	LOCATION_ID INT NOT NULL  ,
-	PROPERTY_ID INT NOT NULL  ,
-	OWNER_ID INT NOT NULL   ,
-    CONSTRAINT pk_facts_property PRIMARY KEY (PID)
+CREATE TABLE property_assessment.facts_property (
+	pid bigint NOT NULL  ,
+	gis_id integer  ,
+	land_value integer  ,
+	bldg_value integer  ,
+	total_value int  ,
+	gross_tax float  ,
+	location_id integer NOT NULL  ,
+	property_id integer NOT NULL  ,
+	owner_id integer NOT NULL   ,
+    CONSTRAINT pk_facts_property PRIMARY KEY (pid)
  );
+
