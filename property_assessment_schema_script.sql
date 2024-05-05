@@ -38,9 +38,9 @@ CREATE TABLE property_assessment.dim_property (
 	fire_place integer  ,
 	num_parking integer  ,
 	prop_view varchar(100)  ,
-    int_cond_score integer  ,
-    ext_cond_score integer  ,
-    prop_view_score integer ,
+    	int_cond_score integer  ,
+    	ext_cond_score integer  ,
+    	prop_view_score integer ,
 	yr_built date  ,
 	yr_remodel date ,
     CONSTRAINT pk_dim_property PRIMARY KEY (property_id)
