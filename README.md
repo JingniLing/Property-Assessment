@@ -8,5 +8,8 @@ Microsoft Azure
 ![alt text](https://github.com/JingniLing/HW-1-and-2/blob/main/Pictures/microsoftazure.png)
 
 ## Modeling
+![alt text](https://github.com/JingniLing/HW-1-and-2/blob/main/Pictures/DbSchema_Modeling.png)
 
+## Information Architecture
+![alt text](https://github.com/JingniLing/HW-1-and-2/blob/main/Pictures/Information%20Art..jpg)
 
